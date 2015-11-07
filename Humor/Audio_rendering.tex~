@@ -1,0 +1,179 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+
+\begin{document}
+
+\title{Random Forests for Equation Rendering
+}
+
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+
+% There's nothing stopping you putting the seventh, eighth, etc.
+% author on the opening page (as the 'third row') but we ask,
+% for aesthetic reasons that you place these 'additional authors'
+% in the \additional authors block, viz.
+
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+
+\numberofauthors{4} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+
+\author[1]{Sai Sirisha Rallabandi}
+\author[1]{Sai Krishna Rallabandi}
+\author[2]{Naina teertha}
+\author[1]{Suryakanth V gangashetty}
+\affil[ ]{\textit {\{sirisha.rallabandi,saikrishna.r\}@research.iiit.ac.in}, svg@iiit.ac.in}
+\affil[1]{International Institute of Information Technology, Hyderabad}
+%\affil[2]{English and Foreign Languages University, Hyderabad}
+
+\renewcommand\Authands{ and }
+
+
+
+
+
+\maketitle
+\begin{abstract}
+
+In this paper we investigate the use of  the Decision Trees for Unit Selection Speech Synthesis for appropriate synthesis of the mathematical equations.There also statistical methods for speech synthesis but The biggest drawback with statistical parametric synthesis versus unit-selection synthesis is the quality of synthesized speech
+
+As a part of submission we have also shown that Unit selection speech synthesis performs better than the statistical speech synthesis by RNN.
+
+
+
+\end{abstract}
+
+
+\terms{Text-to-Speech,Classification and regression Trees,Decision trees,}
+
+
+
+\section{Introduction}
+Text to speech (TTS) systems hold promise as an information access tool for literate and illiterate including visually challenged. Current TTS systems can convert a typical text into a natural sounding speech. However, auditory rendering of mathematical content, specifically equation reading is not a trivial task. Mathematical equations have to be read so that appropriate bracketing such as parentheses, superscripts and subscripts are conveyed to the listener in an accurate way. We have addressed this issue in our previous work[] by proposing four different techniques to render the equations in audio. We extended the framework further for other statistical data in [] where we applied the techniques for rendering pie and bar charts as well. In this paper, we extend the framework to the statistical parametric synthesis domain by incorporating random forests as the acoustic models. 
+ 
+
+ 
+
+In this paper, we show that concatenative speech synthesis gives better results than the statistical synthesis. In Section 2, we briefly describe about the Decision trees and in Section 3 we describe the significane of the work, Present work, experimental results and conclusion.
+
+\section{Significance of the work}
+Mathematical content comprise of different types of visual cues to convey their semantic meaning. Some of these visual cues are superscripts, subscripts, parentheses,etc.  To effectively resolve such ambiguities and identify such demarcations need to be mapped to their auditory equivalent. Mathematics, in its visual form, gives the reader a very high level granularity in perceiving the equation. Mathematical equations, when presented in audio must be able to match the advantage in granularity provided in visual representation of mathematics.  In [], we first performed an experiment to measure the effectiveness of mathematical equations synthesised  using a traditional TTS system. We then analysed the acoustic cues which human-beings employ while speaking the mathematical content to (visually challenged) listeners and then proposed four techniques which render the observed patterns in a text-to- speech system.  
+
+\section{Scope of the work}
+We have used statistical parametric synthesis to render the equations in our previous work. Typical data size is 5 hours. As that much data is not available for equations ( the data is typically of half hour - one hour), the voices used were either Arctic [arctic database] or built from audiobooks [kishore sir thesis], both when text was available and when it was not [tejas journal].  However, as the original recordings were not aimed at rendering mathematical equations, the prosody was not natural. The voices built using only half hour of data had too much muffledness and buzziness due to parameter data sparsity[zavier lattorre paper]. Recently, Random forests have been proposed for acoustic modeling [ alan blak interspeech]. It was observed in that paper that RFs were performing well for low data. Therefore, we investigate the performance of the RFs for the task of equation rendering. More precisely, we seek answers to the questions: Can RFs be used to build voice using less data as in the case of eqn rendering? Can we improve the performance by using a selection criterion to select the trees as opposed to Random selection? 
+
+\section{Present work}
+
+\section { Decision Trees }
+
+Decision tree learning uses a decision tree as a predictive model which maps observations about an item to conclusions about the item's target value. It is one of the predictive modelling approaches used in statistics, data mining and machine learning. Tree models where the target variable can take a finite set of values are called classification trees. In these tree structures, leaves represent class labels and branches represent conjunctions of features that lead to those class labels. Decision trees where the target variable can take continuous values (typically real numbers) are called regression trees. CART is powerful because it can deal with incomplete data, multiple types of features  both in input features and predicted features, and the trees it produces often contain rules which are humanly readable.
+
+ CART analysis consists of four basic steps.The first step consists of tree building, during which a tree is built using recursive splitting of nodes. Each resulting node is assigned a predicted class, based on the distribution of classes in the learning dataset which would occur in that node and the decision cost matrix. The assignment of a predicted class to each node occurs whether or not that node is subsequently split into child nodes. The second step consists of stopping the tree building process. At this point a “maximal” tree has been produced, which probably greatly overfits the information contained within the learning dataset.  The third step consists of tree “pruning,” which results in the creation of a sequence of simpler and simpler trees, through the cutting off of increasingly important nodes.The fourth step consists of optimal tree selection, during which the tree which fits the information in the learning dataset,but does not overfit the information, is selected from among the sequence of pruned trees.
+   
+ Two applications of statistically-generated decision trees to problems in speech synthesis are described: (1) End of sentence detection: A decision tree is generated to decide when a period in text corresponds to the end of a declarative sentence (and not an abbreviation). The result is 99.8 percentage correct classification on the Brown corpus. (2) Segment duration modelling in speech synthesis: 1500 utterances from a single speaker were used to a build a decision tree that predicts segment durations based on features such as lexical position, stress, and phonetic context. The result is prediction with residuals with a 23 millisecond standard deviation and synthesis that compares favorably with current hand-generated duration rules.
+
+
+
+
+
+
+
+\section{Conclusion}
+
+ Through this work, we have  presented a new approach to math accessibility by making effective use of speech cues by concatenative speech synthesis. We have also shown that concatenative speech synthesis performs better than that of the statistical parametric synthesis.
+. We tabulated a series of experiments performed with  concatenative synthesis using decision trees and statistical synthesis.This work shall be further extended...............
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{sigproc} 
+
+
+
+
+ % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+%APPENDICES are optional
+
+
+
+
+
+
+
+
+
+
+
+
+\balancecolumns
+% That's all folks!
+\end{document}

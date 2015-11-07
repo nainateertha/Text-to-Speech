@@ -1,0 +1,101 @@
+\begin{thebibliography}{10}
+
+\bibitem{huang2012improving}
+E.~H. Huang, R.~Socher, C.~D. Manning, and A.~Y. Ng.
+\newblock Improving word representations via global context and multiple word
+  prototypes.
+\newblock In {\em Proceedings of the 50th Annual Meeting of the Association for
+  Computational Linguistics: Long Papers-Volume 1}, pages 873--882. Association
+  for Computational Linguistics, 2012.
+
+\bibitem{jones2006generating}
+R.~Jones, B.~Rey, O.~Madani, and W.~Greiner.
+\newblock Generating query substitutions.
+\newblock In {\em Proceedings of the 15th international conference on World
+  Wide Web}, pages 387--396. ACM, 2006.
+
+\bibitem{maas2011learning}
+A.~L. Maas, R.~E. Daly, P.~T. Pham, D.~Huang, A.~Y. Ng, and C.~Potts.
+\newblock Learning word vectors for sentiment analysis.
+\newblock In {\em Proceedings of the 49th Annual Meeting of the Association for
+  Computational Linguistics: Human Language Technologies-Volume 1}, pages
+  142--150. Association for Computational Linguistics, 2011.
+
+\bibitem{mikolov2013efficient}
+T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv preprint arXiv:1301.3781}, 2013.
+
+\bibitem{mikolov2013distributed}
+T.~Mikolov, I.~Sutskever, K.~Chen, G.~S. Corrado, and J.~Dean.
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  3111--3119, 2013.
+
+\bibitem{pacsca2006names}
+M.~Pa{\c{s}}ca, D.~Lin, J.~Bigham, A.~Lifchits, and A.~Jain.
+\newblock Names and similarities on the web: fact extraction in the fast lane.
+\newblock In {\em Proceedings of the 21st International Conference on
+  Computational Linguistics and the 44th annual meeting of the Association for
+  Computational Linguistics}, pages 809--816. Association for Computational
+  Linguistics, 2006.
+
+\bibitem{pennington2014glove}
+J.~Pennington, R.~Socher, and C.~D. Manning.
+\newblock Glove: Global vectors for word representation.
+\newblock {\em Proceedings of the Empiricial Methods in Natural Language
+  Processing (EMNLP 2014)}, 12, 2014.
+
+\bibitem{ratinov2011local}
+L.~Ratinov, D.~Roth, D.~Downey, and M.~Anderson.
+\newblock Local and global algorithms for disambiguation to wikipedia.
+\newblock In {\em Proceedings of the 49th Annual Meeting of the Association for
+  Computational Linguistics: Human Language Technologies-Volume 1}, pages
+  1375--1384. Association for Computational Linguistics, 2011.
+
+\bibitem{reyes2010evaluating}
+A.~Reyes, M.~Potthast, P.~Rosso, and B.~Stein.
+\newblock Evaluating humour features on web comments.
+\newblock In {\em LREC}, 2010.
+
+\bibitem{socher2011semi}
+R.~Socher, J.~Pennington, E.~H. Huang, A.~Y. Ng, and C.~D. Manning.
+\newblock Semi-supervised recursive autoencoders for predicting sentiment
+  distributions.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 151--161. Association for Computational
+  Linguistics, 2011.
+
+\bibitem{stock2006automatic}
+O.~Stock and C.~Strapparava.
+\newblock Automatic production of humorous expressions for catching the
+  attention and remembering, 2006.
+
+\bibitem{stuart2012constructions}
+L.~M. Stuart.
+\newblock Constructions for joke recognition.
+\newblock In {\em 2012 AAAI Fall Symposium Series}, 2012.
+
+\bibitem{turian2010word}
+J.~Turian, L.~Ratinov, and Y.~Bengio.
+\newblock Word representations: a simple and general method for semi-supervised
+  learning.
+\newblock In {\em Proceedings of the 48th annual meeting of the association for
+  computational linguistics}, pages 384--394. Association for Computational
+  Linguistics, 2010.
+
+\bibitem{yu2014improving}
+M.~Yu and M.~Dredze.
+\newblock Improving lexical embeddings with semantic knowledge.
+\newblock In {\em Proceedings of the 52nd Annual Meeting of the Association for
+  Computational Linguistics}, volume~2, pages 545--550, 2014.
+
+\bibitem{zhang2014recognizing}
+R.~Zhang and N.~Liu.
+\newblock Recognizing humor on twitter.
+\newblock In {\em Proceedings of the 23rd ACM International Conference on
+  Conference on Information and Knowledge Management}, pages 889--898. ACM,
+  2014.
+
+\end{thebibliography}

@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: sigproc-sp.aux
+The style file: abbrv.bst
+Database file #1: sigproc.bib
+Repeated entry---line 116 of file sigproc.bib
+ : @inproceedings{reyes2010evaluating
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 122 of file sigproc.bib
+ : @inproceedings{zhang2014recognizing
+ :                                    ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "miller1995wordnet"
+You've used 15 entries,
+            2118 wiz_defined-function locations,
+            576 strings with 7054 characters,
+and the built_in function-call counts, 6731 in all, are:
+= -- 681
+> -- 314
+< -- 11
++ -- 123
+- -- 108
+* -- 425
+:= -- 1015
+add.period$ -- 52
+call.type$ -- 15
+change.case$ -- 99
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 289
+empty$ -- 529
+format.name$ -- 108
+if$ -- 1506
+int.to.chr$ -- 0
+int.to.str$ -- 15
+missing$ -- 14
+newline$ -- 77
+num.names$ -- 30
+pop$ -- 139
+preamble$ -- 1
+purify$ -- 84
+quote$ -- 0
+skip$ -- 230
+stack$ -- 0
+substring$ -- 411
+swap$ -- 122
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 60
+warning$ -- 0
+while$ -- 60
+width$ -- 17
+write$ -- 170
+(There were 2 error messages)

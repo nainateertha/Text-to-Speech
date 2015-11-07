@@ -1,0 +1,428 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+
+\begin{document}
+
+\title{A Framework for Humor Recognition from Social Media using Word Embeddings
+}
+
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+
+% There's nothing stopping you putting the seventh, eighth, etc.
+% author on the opening page (as the 'third row') but we ask,
+% for aesthetic reasons that you place these 'additional authors'
+% in the \additional authors block, viz.
+
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+
+\numberofauthors{4} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+
+\author[1]{Sai Krishna R}
+\author[1]{Brij Mohan Lal Srivastava}
+\author[1]{Sai Sirisha Rallabandi}
+\author[2]{Ayushi Pandey}
+\author[1]{Suryakanth V gangashetty}
+\affil[ ]{\textit {\{saikrishna.r,brijmohanlal.s,sirisha.rallabandi\}@research.iiit.ac.in}, ayuship.09@gmail.com, svg@iiit.ac.in}
+\affil[1]{International Institute of Information Technology, Hyderabad}
+\affil[2]{English and Foreign Languages University, Hyderabad}
+
+\renewcommand\Authands{ and }
+
+
+
+
+
+\maketitle
+\begin{abstract}
+
+We propose a word embedding approach for the recognition of humour in social media data. Conventional methods aim at modeling the text structure and hand crafting features surgically designed to emulate linguistic tendencies in specific types of jokes. We try to take a more hands off approach and use a data driven approach based on the word embeddings to design a complete framework. The experimental results show substantial improvements and outperform the baseline.
+\end{abstract}
+
+
+\terms{Computational Humor, Recursive Neural Networks, Word Embedding}
+
+
+
+\section{Introduction}
+Automatic humour recognition is a small but growing area in the field of Information Retrieval.The complexity of the problem lies in identifying the constituting element of the joke that delivers humour. Reyes et al. \cite{reyes2010evaluating} prove that features like ambiguity (morphosyntactic and semantic), perplexity and sentence complexity can be used to distinguish between humorous and non-humorous one-liners. Their results show that humorous one-liners show a higher degree of ambiguity for all these features. Strapparava et al.\cite{stock2006automatic} study automatic classification of humour of one-liners using stylistic features, content-based features or both in a learning framework. Stuart et al. \cite{stuart2012constructions} proposes a template-match based recognition system using Ontological System Technology and constructionist approaches. Zhang et al. \cite{zhang2014recognizing} propose a systematic method to derive the correlation between humor-related aspects and features from humor-related theories. 
+
+Although each of these techniques work quite well on a limited domain, they rely heavily on hand crafted features. Recently, vector space models of word embeddings have been very successful at learning both the lexical as well as semantic information and are applied to a variety of useful natural language processing applications such as search query expansions \cite{jones2006generating}, quick extraction for IR \cite{pacsca2006names}, automatic annotation \cite{ratinov2011local}. In all these models, the meaning of a word is encoded as a vector computed from the co-occurence statistics of a word and its neighboring words.They are shown to capture the syntax \cite{mikolov2013efficient},\cite{huang2012improving},\cite{turian2010word}. These models can be extended to automatic humor recogniton. 
+
+In this paper, we propose a framework that uses word embeddings learnt from a recursive neural network for automatic recognition of humor from social media data. In Section 2, we briefly describe the word embedding scheme and in Section 3 we describe the model design, followed by experimental results and conclusion.
+
+
+
+\section { Embedding }
+
+Embedding refers to the process where words from the vocabulary (and possibly phrases thereof) are mapped to vectors of real numbers in a low dimensional space, relative to the vocabulary size ("continuous space").
+
+\subsection{Word Vector Representations}
+
+The following are the various publicly available pretrained word vectors which can be used to test the applicability of any task which uses embedding. These representations exhibit a balanced mix between
+large and small amounts of unlabeled text as well as between the neural and spectral methods of training word vectors. 
+
+\subsubsection{Glove Vectors}
+
+Global vectors for word representations \cite{pennington2014glove} are trained on aggregated global word-word co-occurrence statistics. These vectors were trained on 6 billion words from Wikipedia and English Gigaword, and are of length 300.
+
+
+\subsubsection{SkipGram Vectors}
+
+Mikolov et al. \cite{mikolov2013distributed} proposed the Word2Vec tool. In this model, Huffman code of each word is used as an input to a log-linear classifier with a continuous projection layer and words within a given context window are predicted. The available vectors are trained on 100 billion words of Google news dataset and are of length 300. 
+
+\subsubsection{Global Context Vectors}
+
+These vectors are learned using a recursive neural network \cite{socher2011semi} that incorporates both local and global (document-level) context features \cite{maas2011learning}. These vectors were trained on the first 1 billion words of English Wikipedia and are of length 50.
+
+
+
+\subsection{ Semantic Lexicons}
+
+A lot of optimization techniques have been proposed to improve the representation of the vectors based on the task at hand. As the humor related tasks involve common sense knowledge in addition to mere representation, we use the following semantic lexicon to improve the representation of word vectors. 
+
+\subsubsection{Concept Net }
+ConceptNet is a semantic network containing lots of things computers should know about the world, especially when understanding text written by people.
+It is built from nodes representing words or short phrases of natural language, and labeled relationships between them. (We call the nodes "concepts" for tradition, but they'd be better known as "terms".) These are the kinds of relationships computers need to know to search for information better, answer questions, and understand people's goals.
+
+\section{Model}
+
+
+As we grow old, our brain collects memories and trains itself to predict the outcome of events beforehand. For example, if a person is moving towards the door, we expect him to open/close the door. We do not realize but the cognitive model of brain prepares itself with a few choices, and that forms the obvious or expected turn of events. With this prior information, we can define "humor" as the turn of events which are unexpected by this cognitive model. As soon as there is an event which do not follow the predictions of brain, we experience a peculiar sort of muscle movement which can be characterized by laughter, giggle or smile. We are trying to capture the ambiguity just mentioned by suitable modeling the words as vectors in a higher dimensional space and thus come up with a classifier which can distinguish between humorous and non-humorous sentences based on the distribution of the word vectors.
+
+In order to identify if the word embeddings in isolation can be used to predict the humorous nature of the sentences, we conducted initial experiments using the embeddings and tried to classify a segment of the data using Support Vector Machines and Multi-layer Perceptrons.We collected one-liners from twitter using Twitter API and sentences from the book "History of Julius Caeser" as humorous and non humorous data respectively.
+We obtained the word vectors for each word that correspond to humor as well as non-humor and tried to classify them. We've used three word and 5 word contexts as representations but there was no significant improvement. We present the best obtained results in Table 1.
+
+
+\subsection{ Results of Initial Experiment and Inference}
+
+From the table 1, it is apparent that mere word representations do not serve as useful tools for discrimination of humorous and non humorous data.
+In order to gain insight, we clustered the humor and non-humor words separately and observed that although these two classes have center of densities towards opposite ends, on an average, they form a non-separable cluster. 
+This may be due to high volume of common data across the classes. Though we have huge amount of common words across these classes, we cannot remove them as they form an integral part to generate humor and unexpectation.
+
+\begin{table}[h]
+\caption{\label{initial}Classification Accuracy of one-liners vs Biography }
+
+\vspace{8pt} % Gap between title and text
+
+% title of Table
+\centering
+\begin{tabular}{|l |c |c| c| c|}
+% centered columns (4 columns)
+\hline%\hline %inserts double horizontal lines
+Exp &  SVM & MLP   \\
+                 
+% inserts table
+%heading
+\hline
+% inserts single horizontal line
+
+Accuracy & 27.15 & 29.16  \\
+\hline
+
+% [1ex] adds vertical space
+
+%inserts single line
+
+
+\end{tabular}
+\end{table}
+
+
+
+Also, single word vector models are severely limited since they do not capture compositionality. The dominant approach for building representations  of multi-word units from single word vector representations has been to form a linear combination of the single word representations, such as a sum or weighted average.  These approaches can work well when the meaning of a text is literally "the sum of its parts", but fails when words function as operators that modify the meaning of another word which usually happens in the case of humor. This inference leads to the clarity that we cannot use a linear classifier or word-level models for this task and is proved by the experiments we conducted using SVMs and Multi-layered Perceptrons. Hence we investigate the performance of deep neural networks like RNN( Recursive neural Networks) to achieve a non-linear separation.
+
+\subsection{Recursive Neural Network}
+
+In this section, we provide a brief intorduction to Recursive Neural Networks. Unlike standard neural networks, recursive neural networks (RNNs) are able to process structured inputs by repeatedly applying the same neural network at each node of a directed acyclic graph(DAG). In the past they have only been used in settings where another (often symbolic) component was first used to create directed acyclic graphs. These DAGs were subsequently given as input to the RNN. In such a setting, each non-leaf node of the DAG is associated with the same neural network. In other words, all network replications share the same weights. The inputs to all these replicated feed-forward networks are either given by using the child's labels to look up the associated representation or by their previously computed representation. 
+
+The models alternate between two stages:
+\begin{itemize} 
+\item (1) Forward pass – recursively construct morpheme trees (cimRNN, csmRNN) and language model structures (csmRNN) to derive scores for training examples, and 
+
+\item (2) Back-Propagation pass – compute the gradient of the corresponding objective function with respect to the model parameters.
+\end{itemize}
+
+\subsection{Semantic Compositionality using Matrix Vector Recursive Neural Network (MV-RNN)}
+
+In the curent context , compositionality is the ability to learn compositional vector representations for various types of phrases and sentences of arbitrary length. The vector captures the meaning of
+that constituent. The matrix captures how the model modifies the meaning of the other word that it combines with. A representation for a longer phrase is computed bottom-up by recursively combining the words according to the syntactic structure of a parse tree. This model provides a new possibility for moving beyond a linear combination through use of a matrix W that multiplied the word vectors (a, b), and a nonlinearity function $g(.)$ (such as a sigmoid or tanh). This function is recursively applied inside a binarized parse tree so that it can compute vectors for multi-word sequences.
+
+The advantages of MV-RNN are:
+\begin{itemize}
+\item Assigns a vector and a matrix to every word
+\item Learns an input-specific, nonlinear, compositional function for computing vector and matrix representations for multi-word sequences of any syntactic type. 
+\end{itemize}
+
+Assigning vector-matrix representations to all words instead of only to words of one part of speech category allows for greater flexibility which benefits performance. If a word lacks operator semantics, it's matrix can be an identity matrix. However, if a word acts mainly as an operator, such as "sadly", it's vector can become close to zero, while its matrix gains a clear operator meaning.
+
+\subsection{Improving Lexical Embeddings with Semantic Knowledge}
+
+The word embeddings obtained may not capture the desired semantics required and hence it makes sense to impart prior knowledge from semantic resources to learn improved lexical semantic embeddings. Suppose we have a resource that indicates relations between words. In the case of semantics, we could have a resource that encodes semantic similarity between words. Based on this resource, we learn embeddings that predict one word from another related word. We use the Relation Constraint model based joint training approach proposed in \cite{yu2014improving} with ConceptNet and WordNet as resources to improve the obtained embeddings.
+
+
+\section{Data}
+
+As there is no gold standard in computational humor recognition, we performed our experiments on the corpus used by previous works in the domain, i.e \cite{reyes2010evaluating} and \cite{zhang2014recognizing}.  In \cite{reyes2010evaluating}, the authors use 3.8 million comments retrieved from SlashDot news Website.  Comments on SlashDot are categorized in a community-driven process. The comment categories include the following tags: funny, informative, insightful, interesting, off-topic, flamebait, and troll. In \cite{zhang2014recognizing}, the authors have used tweets from social media Twitter. They segregate the data as humorous tweets, humorous non tweets (from textfiles.com) and non-humorous tweets. 
+
+
+\section{Experiments}
+
+We've analysed the performance of the proposed framework against both the previous mentioned frameworks, using the same data as mentioned. We've used word representations derived from the Neural Network language model for the experiments although the representations from the other two mentioned models could be considered as well.
+
+\subsection{Experiment 1: Web Comments}
+
+We've used the same evaluation criterion and experimental design as that of \cite{reyes2010evaluating} and compared the quality of our results against the reported results in each. We mention the experiments and the procedure here. The training sets contain 100,000 comments per class, the test sets contain 50,000 comments per class. Each classifier is evaluated using different sets of features.
+The following schema summarizes the features and the order in which they are assessed: 
+\begin{itemize}  
+\item s1 sexual-content and semantic ambiguity
+\item s2 sexual-content, semantic ambiguity, and polarity
+\item s3 sexual-content, semantic ambiguity, polarity and emotions
+\item s4 all features
+\end{itemize}
+All classifications experiments consider the classes funny
+versus informative, insightful, and negative respectively.
+The Tables 2-4 comprise the results.
+
+
+\begin{table}[t]
+\caption{\label{}Classification Accuracy of Funny vs Informative }
+
+\vspace{8pt} % Gap between title and text
+
+% title of Table
+\centering
+\begin{tabular}{|l |c |c| c| c|}
+% centered columns (4 columns)
+\hline%\hline %inserts double horizontal lines
+Exp & Bayes & SVM & REPTree & MVRNN  \\
+                 
+% inserts table
+%heading
+\hline
+% inserts single horizontal line
+
+s1 & 57.15 & 57.16 &57.16 & 78.55 \\
+\hline
+s2 & 57.35 & 57.38 &57.36 & 82.46 \\
+\hline
+s3 & 58.03 & 57.38 &57.29 & 79.23 \\
+\hline
+s4 & 58.26 & 57.94 &58.31 & 78.10 \\
+\hline
+% [1ex] adds vertical space
+
+%inserts single line
+
+
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\caption{\label{}Classification Accuracy of Funny vs Insightful }
+
+\vspace{8pt} % Gap between title and text
+
+% title of Table
+\centering
+\begin{tabular}{|l |c |c| c| c|}
+% centered columns (4 columns)
+\hline%\hline %inserts double horizontal lines
+Exp & Bayes & SVM & REPTree & MVRNN  \\
+                 
+% inserts table
+%heading
+\hline
+% inserts single horizontal line
+
+s1 & 62.19 & 62.25 &62.25 & 90.14 \\
+\hline
+s2 & 62.66 & 62.43 &62.74 & 88.78 \\
+\hline
+s3 & 62.39 & 62.52 &62.92 & 81.55 \\
+\hline
+s4 & 63.08 & 62.97 &63.52 & 87.24 \\
+\hline
+% [1ex] adds vertical space
+
+%inserts single line
+
+
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\caption{\label{}Classification Accuracy of Funny vs Negative }
+
+\vspace{8pt} % Gap between title and text
+
+% title of Table
+\centering
+\begin{tabular}{|l |c |c| c| c|}
+% centered columns (4 columns)
+\hline%\hline %inserts double horizontal lines
+Exp & Bayes & SVM & REPTree & MVRNN  \\
+                 
+% inserts table
+%heading
+\hline
+% inserts single horizontal line
+
+s1 & 60.37 & 60.36 &60.37 & 92.54 \\
+\hline
+s2 & 60.54 & 60.41  &60.54 & 88.14 \\
+\hline
+s3 & 60.13 & 60.37 &60.54 & 91.44\\
+\hline
+s4 & 60.48 & 60.89 &60.89 & 88.25 \\
+\hline
+% [1ex] adds vertical space
+
+%inserts single line
+
+
+\end{tabular}
+\end{table}
+
+
+\subsection{Experiment 2: Twitter Data}
+
+The authors of \cite{zhang2014recognizing} have made the data publicly available and hence we could run the evaluation on the same data. The authors have used Gradient Boosted Regression Trees for classification. 
+
+
+
+\begin{table}[th]
+\caption{\label{}Classification Accuracy of GBRT vs MVRNN  }
+
+\vspace{8pt} % Gap between title and text
+
+% title of Table
+\centering
+\begin{tabular}{|l |c |c| c| c|}
+% centered columns (4 columns)
+\hline%\hline %inserts double horizontal lines
+Exp &  GBRT &  MVRNN  \\
+                 
+% inserts table
+%heading
+\hline
+% inserts single horizontal line
+
+Accuracy & 0.817 & 0.824 \\
+\hline
+F1 & 0.812 & 0.810 \\
+\hline
+
+% [1ex] adds vertical space
+
+%inserts single line
+
+
+\end{tabular}
+\end{table}
+
+
+We can clearly see from the results in Tables 2-4 and 5 that Matrix-Vector Recursive Neural Networks using embeddings outperfrom baseline. The reason for this maybe due to the nature of sentences. The temporal information is highly vital to represent the semantics of a sentence and it is well captured and modeled by MV-RNN. This also can be attributed to the sematic relations captured inherently in the continuous space distribution of the Matrix Vector model of Recursive Neural Network. As humor is a highly cognitive aspect,it may not depend not just on a mere set of features/word representations, but rather on the relation between the features/words. Therefore, models like MV-RNN which capture the latent relationship between a pair of words intuitively perform better compared to a set of features. However, the features mentioned in \cite{zhang2014recognizing} can be used as constraints while training the model itself to improve the performance. 
+
+\section{Conclusion}
+
+This paper presents a framework to model humorous content on social media into a coherent data-driven architecture using various classifiers. We tabulated a series of experiments performed with a wide range of input data and variety of network parameters for RNN. We tried to find the best classifier for this task which happens to be MV-RNN. This work shall be further extended to recognize similar humorous sentences using paraphrasing techniques and cluster them under well-defined topics using topic modeling.
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{sigproc} 
+
+
+
+
+ % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+%APPENDICES are optional
+
+
+
+
+
+
+
+
+
+
+
+
+\balancecolumns
+% That's all folks!
+\end{document}
